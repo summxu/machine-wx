@@ -14,10 +14,20 @@ export function login (data) {
   });
 }
 
+// 获取个人信息
 export function person (params) {
   return request({
     url: "/admin/base/comm/person",
     method: "GET",
     params
+  });
+}
+
+// 获取设备列表
+export function devicePage (data) {
+  return request({
+    url: "/admin/machine/device/page",
+    method: "POST",
+    data
   });
 }

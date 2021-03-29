@@ -16,8 +16,6 @@
             v-model="mobile"
             placeholder="请输入账号"
             class="form-input"
-            type="tel"
-            maxlength="11"
           />
         </div>
       </div>

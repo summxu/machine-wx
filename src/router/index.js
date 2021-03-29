@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-03-28 14:15:14
+ * @LastEditTime: 2021-03-29 16:10:16
  * @Msg: Nothing
  */
 import Vue from "vue";
@@ -13,13 +13,34 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    name: "workorder",
+    component: () => import("@/views/WorkOrder"),
+    meta: {
+      title: '工单列表'
+    }
+  },
+  {
+    path: "/setting",
+    name: "setting",
+    component: () => import("@/views/Person"),
+    meta: {
+      title: '配置中心'
+    }
+  },
+  {
+    path: "/device",
+    name: "device",
+    component: () => import("@/views/Device"),
+    meta: {
+      title: '设备管理'
+    }
+  },
+  {
     path: "/login",
     name: "login",
-    component: () => import("@/views/Login"),
-    meta: {
-      title: '闸机管理系统'
-    }
-  }
+    component: () => import("@/views/Login")
+  },
 ];
 
 const router = new VueRouter({

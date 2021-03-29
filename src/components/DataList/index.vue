@@ -1,7 +1,7 @@
 <!--
  * @Auth: Chenxu
  * @Date: 2020-01-17 16:13:54
- * @LastEditTime: 2020-09-26 20:07:13
+ * @LastEditTime: 2021-03-29 16:21:51
  -->
 <template>
   <div class="cx-data-list">
@@ -18,18 +18,18 @@
 </template>
 
 <script>
-import { List ,Empty} from 'vant';
+import { List, Empty } from 'vant';
 export default {
   name: 'Deal',
-  components: { List,Empty },
+  components: { List, Empty },
   data () {
     return {
       list: [],
       loading: false,
       finished: false,
       queryParams: {
-        page_index: 1,
-        page_size: 10
+        page: 1,
+        size: 10
       }
     };
   },
@@ -44,25 +44,24 @@ export default {
         ...this.queryParams,
         ...this.params
       }
-      const res = await this.request(tempParams)
-      const data = res.data
+      const { data } = await this.request(tempParams)
 
       /* 页码为1 */
-      if (tempParams.page_index === 1) {
+      if (tempParams.page === 1) {
         this.list = []
       }
 
-      data.forEach(item => {
+      data.list.forEach(item => {
         this.list.push(item)
       })
-      if (data.length < this.queryParams.page_size) {
+      if (data.list.length < this.queryParams.size) {
         this.finished = true;
       }
 
       this.$emit('setData', this.list)
       // 加载状态结束
       this.loading = false;
-      this.queryParams.page_index += 1
+      this.queryParams.page += 1
     }
   }
 }

@@ -1,9 +1,13 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2020-09-21 18:08:44
+ * @LastEditTime: 2021-03-29 16:59:41
  * @Msg: 适配Ratia屏幕的图片缩放方法
  */
+html {
+  background-color: var(--ion-background-color);
+}
+
 .bg-image(@url) {
   background-image: url("@{url}@2x.png");
 
@@ -48,6 +52,10 @@ p {
   height: 20px;
 }
 
+.margin-bottom10{
+  margin-bottom: 10px;
+}
+
 .center-padding {
   padding: 10px
 }
@@ -60,17 +68,11 @@ p {
   padding: 25px
 }
 
-.card-btn {
-  height       : 28px !important;
-  border-radius: 14px !important;
-  font-size    : 14px !important;
-  font-weight  : 400 !important;
-  line-height  : 20px !important;
-  margin       : 0 !important;
-
-  .btn-arrow {
-    color: #fff;
-  }
+// 卡片
+.card {
+  background-color: #fff;
+  padding         : 10px;
+  border-radius   : 4px;
 }
 
 .van-button__text {
