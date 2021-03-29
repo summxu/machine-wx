@@ -1,7 +1,7 @@
 /*
  * @Auth: Chenxu
  * @Date: 2019-12-26 13:07:13
- * @LastEditTime: 2021-03-28 14:27:11
+ * @LastEditTime: 2021-03-29 22:36:47
  */
 import axios from "axios";
 import { Toast } from "vant";
@@ -39,14 +39,18 @@ service.interceptors.response.use(
     }
   },
   error => {
-    switch (error.response.status) {
+    const { status, data } = error.response
+    switch (status) {
       case 401:
       case 412:
-        Toast.fail("用户信息获取失败,请重新登录!");
+        Toast.fail(data.message);
 
         store.dispatch("logOut");
         router.push("/login");
 
+        return Promise.reject(error);
+      case 403:
+        Toast.fail(data.message);
         return Promise.reject(error);
       default:
         Toast.fail("服务器开小差了┭┮﹏┭┮");

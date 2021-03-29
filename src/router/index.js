@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-03-29 16:10:16
+ * @LastEditTime: 2021-03-29 21:56:57
  * @Msg: Nothing
  */
 import Vue from "vue";
@@ -34,6 +34,14 @@ const routes = [
     component: () => import("@/views/Device"),
     meta: {
       title: '设备管理'
+    }
+  },
+  {
+    path: "/devicedetail",
+    name: "devicedetail",
+    component: () => import("@/views/Device/DeviceDetail"),
+    meta: {
+      title: '设备状态设置'
     }
   },
   {

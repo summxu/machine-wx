@@ -31,3 +31,48 @@ export function devicePage (data) {
     data
   });
 }
+
+// 获取设备详情
+export function deviceInfo (params) {
+  return request({
+    url: "/admin/machine/device/info",
+    method: "GET",
+    params
+  });
+}
+
+// 修改设备信息
+export function deviceUpdate (data) {
+  return request({
+    url: "/admin/machine/device/update",
+    method: "POST",
+    data
+  });
+}
+
+// 新增设备信息
+export function deviceAdd (data) {
+  return request({
+    url: "/admin/machine/device/add",
+    method: "POST",
+    data
+  });
+}
+
+// 新增设备信息
+export function deviceDel (data) {
+  return request({
+    url: "/admin/machine/device/delete",
+    method: "POST",
+    data
+  });
+}
+
+// 用户列表
+export function userList (data) {
+  return request({
+    url: "/admin/base/sys/user/list",
+    method: "POST",
+    data
+  });
+}

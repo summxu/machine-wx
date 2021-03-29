@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-03-29 17:04:22
+ * @LastEditTime: 2021-03-29 22:17:59
  * @Msg: Nothing
 -->
 <template>
@@ -17,20 +17,25 @@
         </p>
         <div class="card-bottom">
           <div class="card-bottom-text">设置参数</div>
-          <div class="card-bottom-text">查看状态</div>
+          <router-link
+            :to="{ name: 'devicedetail', params: { id: item.id } }"
+            class="card-bottom-text"
+            >查看状态</router-link
+          >
         </div>
       </div>
     </DataList>
+    <Button type="info" block @click="toDetail">新增设备</Button>
   </div>
 </template>
 
 <script>
 import { devicePage } from "@/axios/api";
-import { Tag, Empty } from "vant";
+import { Tag, Button } from "vant";
 import DataList from "@/components/DataList";
 export default {
   name: "Device",
-  components: { Tag, DataList, Empty },
+  components: { Tag, DataList, Button },
   data () {
     return {
       devicePage,
@@ -40,7 +45,13 @@ export default {
   watch: {
 
   },
-  methods: {}
+  methods: {
+    toDetail () {
+      this.$router.push({
+        name: 'devicedetail'
+      })
+    }
+  }
 };
 </script>
 
@@ -53,13 +64,13 @@ export default {
   line-height: 26px;
 }
 
-.card-bottom{
+.card-bottom {
   display: flex;
   justify-content: space-around;
   height: 50px;
   align-items: center;
 }
-.card-bottom-text{
-color: var(--ion-color-primary );
+.card-bottom-text {
+  color: var(--ion-color-primary);
 }
 </style>
