@@ -1,0 +1,90 @@
+/*
+ * @Author: Xuxu
+ * @Date: 2020-09-10 08:57:16
+ * @LastEditTime: 2020-09-21 18:08:44
+ * @Msg: 适配Ratia屏幕的图片缩放方法
+ */
+.bg-image(@url) {
+  background-image: url("@{url}@2x.png");
+
+  @media (-webkit-min-device-pixel-ratio: 3),
+  (min-device-pixel-ratio: 3) {
+    background-image: url("@{url}@3x.png");
+  }
+}
+
+// 公共代码样式
+p {
+  margin    : 0;
+  padding   : 0;
+  text-align: left;
+}
+
+// 统一按钮样式
+.form-submit {
+  height       : 48px !important;
+  background   : var(--ion-color-primary) !important;
+  border-radius: 8px !important;
+  margin-top   : 20px !important;
+  border       : 0 !important;
+  font-size    : 18px !important;
+  font-weight  : 500 !important;
+  color        : #FFFFFF !important;
+}
+
+// 底部Tabbar空间
+.bottom-space {
+  margin-bottom: 50px;
+}
+
+.divider,
+.divider20 {
+  width           : 100%;
+  height          : 8px;
+  background-color: var(--ion-color-divider);
+}
+
+.divider20 {
+  height: 20px;
+}
+
+.center-padding {
+  padding: 10px
+}
+
+.center-padding15 {
+  padding: 15px
+}
+
+.center-padding25 {
+  padding: 25px
+}
+
+.card-btn {
+  height       : 28px !important;
+  border-radius: 14px !important;
+  font-size    : 14px !important;
+  font-weight  : 400 !important;
+  line-height  : 20px !important;
+  margin       : 0 !important;
+
+  .btn-arrow {
+    color: #fff;
+  }
+}
+
+.van-button__text {
+  display        : flex;
+  flex-flow      : row nowrap;
+  align-items    : center;
+  justify-content: space-between;
+}
+
+// model框里的文本
+p.exam-add-text {
+  text-align : center;
+  font-size  : 16px;
+  font-weight: 400;
+  color      : #000000;
+  padding-top: 15px;
+}

@@ -1,0 +1,20 @@
+/*
+ * @Author: Xuxu
+ * @Date: 2020-09-10 08:57:16
+ * @LastEditTime: 2021-03-28 13:11:24
+ * @Msg: 自定义应用颜色
+ */
+
+:root {
+  --ion-background-color : #fff;
+  --ion-background-color2: #f7f7f7;
+  --ion-text-color       : #332c25;
+  --ion-text-color2      : #343434;
+  --ion-color-primary    : #3498DB;
+  --ion-color-primary2   : #FAF2EB;
+  --ion-color-dim        : #7f7f7f;
+  --ion-color-dim2       : #555;
+  --ion-color-dim3       : #ebebeb;
+  --ion-color-dim4       : #e6e6e6;
+  --ion-color-divider    : #f5f5f5;
+}
