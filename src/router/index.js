@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-03-29 21:56:57
+ * @LastEditTime: 2021-03-30 09:49:03
  * @Msg: Nothing
  */
 import Vue from "vue";
@@ -26,6 +26,22 @@ const routes = [
     component: () => import("@/views/Person"),
     meta: {
       title: '配置中心'
+    }
+  },
+  {
+    path: "/user",
+    name: "user",
+    component: () => import("@/views/User"),
+    meta: {
+      title: '推送用户'
+    }
+  },
+  {
+    path: "/userdetail",
+    name: "userdetail",
+    component: () => import("@/views/User/UserDetail"),
+    meta: {
+      title: '推送用户管理'
     }
   },
   {

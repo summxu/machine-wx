@@ -57,20 +57,5 @@ export default {
 
 <style lang="less" scoped>
 @import url("./index.less");
-.card {
-  padding-bottom: 0px;
-}
-.device-item {
-  line-height: 26px;
-}
 
-.card-bottom {
-  display: flex;
-  justify-content: space-around;
-  height: 50px;
-  align-items: center;
-}
-.card-bottom-text {
-  color: var(--ion-color-primary);
-}
 </style>

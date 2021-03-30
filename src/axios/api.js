@@ -59,7 +59,7 @@ export function deviceAdd (data) {
   });
 }
 
-// 新增设备信息
+// 删除设备信息
 export function deviceDel (data) {
   return request({
     url: "/admin/machine/device/delete",
@@ -72,6 +72,61 @@ export function deviceDel (data) {
 export function userList (data) {
   return request({
     url: "/admin/base/sys/user/list",
+    method: "POST",
+    data
+  });
+}
+
+// 用户列表（分页）
+export function userPage (data) {
+  return request({
+    url: "/admin/base/sys/user/page",
+    method: "POST",
+    data
+  });
+}
+
+
+// 获取用户详情
+export function userInfo (params) {
+  return request({
+    url: "/admin/base/sys/user/info",
+    method: "GET",
+    params
+  });
+}
+
+// 修改用户信息
+export function userUpdate (data) {
+  return request({
+    url: "/admin/base/sys/user/update",
+    method: "POST",
+    data
+  });
+}
+
+// 新增用户信息
+export function userAdd (data) {
+  return request({
+    url: "/admin/base/sys/user/add",
+    method: "POST",
+    data
+  });
+}
+
+// 删除用户信息
+export function userDel (data) {
+  return request({
+    url: "/admin/base/sys/user/delete",
+    method: "POST",
+    data
+  });
+}
+
+// 角色列表
+export function roleList (data) {
+  return request({
+    url: "/admin/base/sys/role/list",
     method: "POST",
     data
   });

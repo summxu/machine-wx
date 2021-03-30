@@ -1,52 +1,71 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-03-30 14:43:14
+ * @LastEditTime: 2021-03-30 14:43:03
  * @Msg: Nothing
 -->
 <template>
-  <div class="device-detail ">
-    <Popup v-model="userPicker" position="bottom">
+  <div class="user-detail ">
+    <Popup v-model="rolePicker" position="bottom">
       <Picker
         show-toolbar
-        :columns="userPickerColumns"
-        @confirm="userPickerOk"
-        @cancel="userPicker = false"
+        :columns="rolePickerColumns"
+        @confirm="rolePickerOk"
+        @cancel="rolePicker = false"
       />
     </Popup>
     <CellGroup title=" ">
       <Field
         v-model="formData.name"
-        label="设备名称"
-        placeholder="请输入设备名称"
+        label="客户姓名"
+        placeholder="请输入客户姓名"
       />
       <Field
-        v-model="formData.channelName"
-        label="通道名称"
-        placeholder="请输入通道名称"
+        v-model="formData.username"
+        label="登录账号"
+        placeholder="中文加数字"
       />
       <Field
-        v-model="formData.mac"
-        label="MAC地址"
-        placeholder="请输入MAC地址"
+        v-model="formData.password"
+        label="登录密码"
+        placeholder="默认密码为123456"
+        type="password"
       />
+      <Field
+        v-model="formData.phone"
+        label="手机号"
+        placeholder="请输入手机号"
+        type="tel"
+      />
+      <Field v-model="formData.email" label="邮箱" placeholder="请输入邮箱" />
       <Field
         readonly
         clickable
-        :value="getUserNameByID(formData.maintainerId)"
-        label="检修员"
-        placeholder="点击选择检修员"
+        :value="
+          getRoleNameByID(formData.roleIdList ? formData.roleIdList[0] : null)
+        "
+        label="部门"
+        placeholder="点击选择部门"
+        @click="rolePicker = true"
         is-link
-        @click="userPicker = true"
+      />
+      <Field
+        v-model="formData.remark"
+        label="备注"
+        rows="2"
+        show-word-limit
+        type="textarea"
+        placeholder="请输入备注"
       />
     </CellGroup>
     <CellGroup title=" ">
-      <Cell title="设备状态">
+      <Cell title="是否禁用">
         <template #right-icon>
           <van-switch
             v-model="formData.status"
-            :active-value="1"
-            :inactive-value="2"
+            active-color="#ee0a24"
+            :active-value="0"
+            :inactive-value="1"
             size="20"
           />
         </template>
@@ -63,37 +82,37 @@
 </template>
 
 <script>
-import { deviceInfo, deviceUpdate, deviceAdd, deviceDel, userList } from "@/axios/api";
+import { userInfo, userUpdate, userAdd, userDel, roleList } from "@/axios/api";
 import { CellGroup, Field, Button, Cell, Popup, Picker } from "vant";
 export default {
-  name: "DeviceDetail",
+  name: "UserDetail",
   components: { Field, CellGroup, Button, Cell, Popup, Picker },
   created () {
     this.getData()
-    this.getUserList()
+    this.getRoleList()
   },
   data () {
     return {
       formData: {},
-      userPickerColumns: [],
-      userPicker: false
+      rolePickerColumns: [],
+      rolePicker: false
     };
   },
   methods: {
-    getUserNameByID (id) {
-      const obj = this.userPickerColumns.find(item => item.id === id)
+    getRoleNameByID (id) {
+      const obj = this.rolePickerColumns.find(item => item.id === id)
       if (obj) {
         return obj.text
       }
     },
-    userPickerOk (e) {
-      this.formData.maintainerId = e.id
-      this.userPicker = false
+    rolePickerOk (e) {
+      this.formData.roleIdList = [e.id]
+      this.rolePicker = false
     },
-    async getUserList () {
+    async getRoleList () {
       try {
-        const { data } = await userList()
-        this.userPickerColumns = data.map(item => ({
+        const { data } = await roleList()
+        this.rolePickerColumns = data.map(item => ({
           id: item.id,
           text: item.name
         }))
@@ -103,7 +122,7 @@ export default {
     },
     async del () {
       try {
-        const { message } = await deviceDel({
+        const { message } = await userDel({
           ids: `${this.$route.params.id}`
         })
         this.$toast.success(message)
@@ -116,7 +135,7 @@ export default {
       const id = this.$route.params.id
       if (!id) return
       try {
-        const { data } = await deviceInfo({ id })
+        const { data } = await userInfo({ id })
         this.formData = data
       } catch (error) {
         console.log(error)
@@ -126,12 +145,12 @@ export default {
       const id = this.$route.params.id
       try {
         if (id) {
-          var { message } = await deviceUpdate({
+          var { message } = await userUpdate({
             id,
             ...this.formData
           })
         } else {
-          var { message } = await deviceAdd(this.formData)
+          var { message } = await userAdd(this.formData)
         }
         this.$toast.success(message)
         this.$router.back()
