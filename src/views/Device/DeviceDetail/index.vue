@@ -53,9 +53,9 @@
       </Cell>
     </CellGroup>
     <div class="center-padding15">
-      <Button type="info" block @click="save">保存</Button>
+      <Button round type="info" block @click="save">保存</Button>
       <div class="height15"></div>
-      <Button v-if="$route.params.id" type="danger" block @click="del"
+      <Button round v-if="$route.params.id" type="danger" block @click="del"
         >删除</Button
       >
     </div>

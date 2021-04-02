@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-04-01 22:26:02
+ * @LastEditTime: 2021-04-02 09:49:12
  * @Msg: Nothing
 -->
 <template>
@@ -20,19 +20,29 @@
       <Cell title="处理说明" :value="formData.remark" />
     </CellGroup>
     <div class="center-padding15">
-      <Button type="info" block @click="save">提交</Button>
-      <div class="height15" />
       <Button
-        type="primary"
+        v-if="
+          formData.status === 1 &&
+          (userInfo.userinfo.id === formData.maintainerId ||
+            userInfo.userinfo.id === 1)
+        "
+        type="info"
+        block
+        @click="save(3)"
+        >修复</Button
+      >
+      <div class="height15" />
+      <div
         v-if="
           formData.status === 3 &&
-          ($store.getters.userInfo.id === formData.userId ||
-            $store.getters.userInfo.id === 1)
+          (userInfo.userinfo.id === formData.userId ||
+            userInfo.userinfo.id === 1)
         "
-        block
-        @click="save"
-        >审核</Button
       >
+        <Button round type="primary" block @click="save(4)">通过</Button>
+        <div class="height15" />
+        <Button round type="danger" block @click="save(1)">驳回</Button>
+      </div>
     </div>
   </div>
 </template>
@@ -40,11 +50,15 @@
 <script>
 import { workOrderInfo, workOrderUpdate } from "@/axios/api";
 import { CellGroup, Field, Button, Cell } from "vant";
+import { mapState } from 'vuex';
 export default {
   name: "WorkOrderDetail",
   components: { Field, CellGroup, Button, Cell },
   created () {
     this.getData()
+  },
+  computed: {
+    ...mapState(['userInfo'])
   },
   data () {
     return {
@@ -62,11 +76,16 @@ export default {
         console.log(error)
       }
     },
-    async save () {
+    async save (status) {
       try {
+        if (status === 3) {
+          var remark = window.prompt("处理说明", "");
+          if (!remark) return
+        }
         var { message } = await workOrderUpdate({
-          id,
-          ...this.formData
+          ...this.formData,
+          remark,
+          status
         })
         this.$toast.success(message)
         this.$router.back()

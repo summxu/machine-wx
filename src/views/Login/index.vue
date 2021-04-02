@@ -35,7 +35,7 @@
           />
         </div>
       </div>
-      <Button @click="loginFun" class="form-submit" type="primary" block
+      <Button round @click="loginFun" class="form-submit" type="primary" block
         >登录</Button
       >
     </div>

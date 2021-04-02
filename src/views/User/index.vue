@@ -28,7 +28,7 @@
         </p>
       </div>
     </DataList>
-    <Button type="info" block @click="toDetail(false)">新增客户</Button>
+    <Button round type="info" block @click="toDetail(false)">新增客户</Button>
   </div>
 </template>
 

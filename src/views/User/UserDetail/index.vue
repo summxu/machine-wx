@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-03-30 14:43:03
+ * @LastEditTime: 2021-04-02 09:34:10
  * @Msg: Nothing
 -->
 <template>
@@ -72,9 +72,9 @@
       </Cell>
     </CellGroup>
     <div class="center-padding15">
-      <Button type="info" block @click="save">保存</Button>
+      <Button round type="info" block @click="save">保存</Button>
       <div class="height15"></div>
-      <Button v-if="$route.params.id" type="danger" block @click="del"
+      <Button round v-if="$route.params.id" type="danger" block @click="del"
         >删除</Button
       >
     </div>
