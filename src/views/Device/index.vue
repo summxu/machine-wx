@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-04-02 09:33:48
+ * @LastEditTime: 2021-04-02 14:53:47
  * @Msg: Nothing
 -->
 <template>
@@ -16,7 +16,11 @@
           <Tag v-if="item.status === 2" type="danger"> 离线</Tag>
         </p>
         <div class="card-bottom">
-          <div class="card-bottom-text">设置参数</div>
+          <router-link
+            :to="{ name: 'deviceParamsDetail', params: { id: item.id } }"
+            class="card-bottom-text"
+            >设置参数</router-link
+          >
           <router-link
             :to="{ name: 'devicedetail', params: { id: item.id } }"
             class="card-bottom-text"
@@ -25,7 +29,7 @@
         </div>
       </div>
     </DataList>
-    <Button round type="info" block @click="toDetail">新增设备</Button>
+    <Button round type="info" block @click="toDetail">绑定设备</Button>
   </div>
 </template>
 
@@ -57,5 +61,4 @@ export default {
 
 <style lang="less" scoped>
 @import url("./index.less");
-
 </style>

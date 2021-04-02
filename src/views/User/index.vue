@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-03-30 14:43:25
+ * @LastEditTime: 2021-04-02 14:54:04
  * @Msg: Nothing
 -->
 <template>
@@ -28,7 +28,7 @@
         </p>
       </div>
     </DataList>
-    <Button round type="info" block @click="toDetail(false)">新增客户</Button>
+    <Button round type="info" block @click="toDetail(false)">添加客户</Button>
   </div>
 </template>
 

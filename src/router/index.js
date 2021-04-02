@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-04-01 22:00:20
+ * @LastEditTime: 2021-04-02 14:51:41
  * @Msg: Nothing
  */
 import Vue from "vue";
@@ -21,7 +21,7 @@ const routes = [
     }
   },
   {
-    path: "/",
+    path: "/workorderDetail/:id",
     name: "workorderDetail",
     component: () => import("@/views/WorkOrder/WorkOrderDetail"),
     meta: {
@@ -45,7 +45,7 @@ const routes = [
     }
   },
   {
-    path: "/userdetail",
+    path: "/userdetail/:id",
     name: "userdetail",
     component: () => import("@/views/User/UserDetail"),
     meta: {
@@ -61,7 +61,15 @@ const routes = [
     }
   },
   {
-    path: "/devicedetail",
+    path: "/deviceParamsDetail/:id",
+    name: "deviceParamsDetail",
+    component: () => import("@/views/Device/DeviceParamsDetail"),
+    meta: {
+      title: '设备参数设置'
+    }
+  },
+  {
+    path: "/devicedetail/:id",
     name: "devicedetail",
     component: () => import("@/views/Device/DeviceDetail"),
     meta: {
