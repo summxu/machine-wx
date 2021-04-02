@@ -1,6 +1,7 @@
 <template>
   <div class="login">
-    <div class="top">
+    <div class="mask">
+      <div class="top">
       <p class="welcome-title">闸机管理系统</p>
     </div>
     <div class="form">
@@ -35,9 +36,10 @@
           />
         </div>
       </div>
-      <Button round @click="loginFun" class="form-submit" type="primary" block
+      <Button round @click="loginFun" class="form-submit" type="info" block
         >登录</Button
       >
+    </div>
     </div>
   </div>
 </template>

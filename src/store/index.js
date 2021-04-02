@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-03-28 14:23:46
+ * @LastEditTime: 2021-04-02 16:07:44
  * @Msg: Nothing
  */
 import { person } from "@/axios/api";
@@ -30,9 +30,9 @@ export default new Vuex.Store({
       state.userInfo = userInfo;
     },
     LOG_OUT (state) {
-      state.userInfo = {};
       localStorage.clear();
       router.replace("/login");
+      state.userInfo = {};
     }
   },
   getters: {

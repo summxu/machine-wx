@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-11 19:20:36
- * @LastEditTime: 2021-03-30 14:44:07
+ * @LastEditTime: 2021-04-02 16:08:28
  * @Msg: Nothing
 -->
 <template>
@@ -9,16 +9,23 @@
     <section class="user-info">
       <div class="info">
         <div class="info-text-box">
-          <p class="name">{{ userInfo.userinfo.username }}</p>
+          <p class="name">{{ userInfo.userinfo.name }}</p>
         </div>
       </div>
     </section>
-    <section class="grid">
-      <CellGroup>
-        <Cell is-link to="user" title="推送用户管理"  />
-        <Cell is-link to="index" title="推送内容列表" value="内容" label="描述信息" />
-      </CellGroup>
-    </section>
+    <CellGroup v-if="userInfo.userinfo.roleId !== '11'">
+      <Cell is-link to="user" title="推送用户管理" />
+      <!-- <Cell
+          is-link
+          to="index"
+          title="推送内容列表"
+          value="内容"
+          label="描述信息"
+        /> -->
+    </CellGroup>
+    <div style="padding: 60px 15px">
+      <Button round type="warning " block @click="logOut">退出登录</Button>
+    </div>
   </div>
 </template>
 
@@ -42,7 +49,7 @@ export default {
     ...mapState(['userInfo'])
   },
   methods: {
-    ...mapActions(["getPersonInfo"]),
+    ...mapActions(["getPersonInfo", "logOut"]),
   }
 };
 </script>

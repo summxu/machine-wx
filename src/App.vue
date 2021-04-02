@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-04-02 14:45:54
+ * @LastEditTime: 2021-04-02 15:14:51
  * @Msg: Nothing
 -->
 <template>
@@ -10,8 +10,8 @@
     <Tabbar route v-show="show">
       <TabbarItem replace to="/" icon="wap-nav">工单</TabbarItem>
       <TabbarItem replace to="/device" icon="cluster">设备</TabbarItem>
-      <!-- <TabbarItem replace to="/setting" icon="setting">配置</TabbarItem> -->
-      <TabbarItem replace to="/user" icon="friends">客户</TabbarItem>
+      <TabbarItem replace to="/setting" icon="setting">配置</TabbarItem>
+      <!-- <TabbarItem replace to="/user" icon="friends">客户</TabbarItem> -->
     </Tabbar>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         case "workorder":
         case "device":
         case "setting":
-        case "user":
+        // case "user":
           this.show = true;
           break;
         default:

@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-04-02 09:49:12
+ * @LastEditTime: 2021-04-02 16:10:25
  * @Msg: Nothing
 -->
 <template>
@@ -28,6 +28,7 @@
         "
         type="info"
         block
+        round
         @click="save(3)"
         >修复</Button
       >

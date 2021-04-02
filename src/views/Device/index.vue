@@ -1,11 +1,19 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-04-02 14:53:47
+ * @LastEditTime: 2021-04-02 17:07:07
  * @Msg: Nothing
 -->
 <template>
   <div class="device center-padding15 bottom-space">
+    <ActionSheet
+      v-model="actionShow"
+      :actions="actions"
+      cancel-text="取消"
+      close-on-click-action
+      @select="onSelect"
+      @cancel="actionShow = false"
+    />
     <DataList @setData="examList = $event" :request="devicePage">
       <div class="card margin-bottom10" v-for="item in examList" :key="item.id">
         <p class="device-item">设备名称：{{ item.name }}</p>
@@ -29,27 +37,53 @@
         </div>
       </div>
     </DataList>
-    <Button round type="info" block @click="toDetail">绑定设备</Button>
+    <Button round type="info" block @click="actionShow = true">绑定设备</Button>
   </div>
 </template>
 
 <script>
 import { devicePage } from "@/axios/api";
-import { Tag, Button } from "vant";
+import { Tag, Button, ActionSheet } from "vant";
 import DataList from "@/components/DataList";
 export default {
   name: "Device",
-  components: { Tag, DataList, Button },
+  components: { Tag, DataList, Button, ActionSheet },
   data () {
     return {
       devicePage,
+      actionShow: false,
+      actions: [{
+        type: 1,
+        name: '手动录入'
+      }, {
+        type: 2,
+        name: '扫描二维码'
+      }],
       examList: []
     };
   },
-  watch: {
-
-  },
   methods: {
+    onSelect (item) {
+      if (item.type === 1) {
+        this.toDetail()
+      } else {
+        wx.scanQRCode({
+          desc: 'scanQRCode desc',
+          needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+          scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+          success: function (res) {
+            // 回调
+            console.log(res)
+          },
+          error: function (res) {
+            console.log(res)
+            if (res.errMsg.indexOf('function_not_exist') > 0) {
+              alert('版本过低请升级')
+            }
+          }
+        });
+      }
+    },
     toDetail () {
       this.$router.push({
         name: 'devicedetail'

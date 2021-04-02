@@ -1,9 +1,17 @@
-.login {
-  padding         : 75px 40px 0;
-  position        : relative;
-  height          : 100vh;
-  box-sizing      : border-box;
-  background-color: #fff;
+.login,
+.mask {
+  position           : relative;
+  height             : 100vh;
+  box-sizing         : border-box;
+  // background-color: #fff;
+  background         : url('../../assets/mingpian_beijing@2x.png') no-repeat center;
+  background-size    : cover;
+}
+
+.mask {
+  background:none;
+  padding            : 75px 40px 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .top {
@@ -17,14 +25,14 @@
   .welcome-title {
     font-size  : 22px;
     font-weight: 500;
-    color      : var(--ion-text-color2);
+    color      : #fff;
     line-height: 30px;
   }
 
   .welcome-sub-title {
     font-size  : 13px;
     font-weight: 300;
-    color      : var(--ion-text-dim2);
+    color      : #fff;
     line-height: 18px;
   }
 }
@@ -37,7 +45,7 @@
   .form-title {
     font-size  : 17px;
     font-weight: 400;
-    color      : #000000;
+    color      : #fff;
     line-height: 24px;
   }
 
@@ -49,7 +57,8 @@
     flex-flow    : row nowrap;
     height       : 50px;
     align-items  : center;
-    border-bottom: 1px solid var(--ion-color-dim3);
+    color      : #fff;
+    border-bottom: 1px solid #fff;
   }
 
   .form-input {
@@ -57,8 +66,9 @@
     flex       : 1;
     font-size  : 14px;
     font-weight: 400;
-    color      : #332C25;
+    color      : #fff;
     line-height: 20px;
+    background-color:transparent;
   }
 
   .form-code {
@@ -75,13 +85,3 @@
   }
 }
 
-.bottom {
-  font-size  : 14px;
-  font-weight: 400;
-  color      : var(--ion-color-primary);
-  position   : absolute;
-  bottom     : 30px;
-  z-index    : 9999;
-  left       : 50%;
-  transform  : translate(-50%, 0);
-}
