@@ -131,3 +131,30 @@ export function roleList (data) {
     data
   });
 }
+
+// 工单列表
+export function workOrderPage (data) {
+  return request({
+    url: "/admin/machine/workorder/page",
+    method: "POST",
+    data
+  });
+}
+
+// 工单详情
+export function workOrderInfo (params) {
+  return request({
+    url: "/admin/machine/workorder/info",
+    method: "GET",
+    params
+  });
+}
+
+// 工单列表
+export function workOrderUpdate (data) {
+  return request({
+    url: "/admin/machine/workorder/update",
+    method: "POST",
+    data
+  });
+}

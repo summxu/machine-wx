@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-03-30 09:49:03
+ * @LastEditTime: 2021-04-01 22:00:20
  * @Msg: Nothing
  */
 import Vue from "vue";
@@ -18,6 +18,14 @@ const routes = [
     component: () => import("@/views/WorkOrder"),
     meta: {
       title: '工单列表'
+    }
+  },
+  {
+    path: "/",
+    name: "workorderDetail",
+    component: () => import("@/views/WorkOrder/WorkOrderDetail"),
+    meta: {
+      title: '工单详情'
     }
   },
   {
