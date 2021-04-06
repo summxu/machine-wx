@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-11 19:20:36
- * @LastEditTime: 2021-04-02 16:08:28
+ * @LastEditTime: 2021-04-06 15:10:31
  * @Msg: Nothing
 -->
 <template>
@@ -23,7 +23,7 @@
           label="描述信息"
         /> -->
     </CellGroup>
-    <div style="padding: 60px 15px">
+    <div style="padding: 35px 15px">
       <Button round type="warning " block @click="logOut">退出登录</Button>
     </div>
   </div>

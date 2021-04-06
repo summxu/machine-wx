@@ -1,7 +1,7 @@
 <!--
  * @Author: Xuxu
  * @Date: 2020-09-10 09:29:19
- * @LastEditTime: 2021-03-30 14:43:14
+ * @LastEditTime: 2021-04-06 15:00:42
  * @Msg: Nothing
 -->
 <template>
@@ -88,6 +88,7 @@ export default {
     },
     userPickerOk (e) {
       this.formData.maintainerId = e.id
+      this.formData.maintainer = e.id
       this.userPicker = false
     },
     async getUserList () {
