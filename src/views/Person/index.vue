@@ -24,7 +24,7 @@
         /> -->
     </CellGroup>
     <div style="padding: 35px 15px">
-      <Button round type="warning " block @click="logOut">退出登录</Button>
+      <Button round type="warning " size="small" block @click="logOut">退出登录</Button>
     </div>
   </div>
 </template>

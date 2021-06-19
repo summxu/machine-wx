@@ -40,7 +40,7 @@
         @click="userPicker = true"
       />
     </CellGroup>
-    <CellGroup title=" ">
+    <!-- <CellGroup title=" ">
       <Cell title="设备状态">
         <template #right-icon>
           <van-switch
@@ -51,11 +51,11 @@
           />
         </template>
       </Cell>
-    </CellGroup>
+    </CellGroup> -->
     <div class="center-padding15">
-      <Button round type="info" block @click="save">保存</Button>
+      <Button round type="info" size="small" block  @click="save">保存</Button>
       <div class="height15"></div>
-      <Button round v-if="$route.params.id" type="danger" block @click="del"
+      <Button round v-if="$route.params.id" size="small" type="danger" block @click="del"
         >删除</Button
       >
     </div>

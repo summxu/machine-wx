@@ -123,6 +123,24 @@ export function userDel (data) {
   });
 }
 
+// 获取指令合集
+export function instructList (data) {
+  return request({
+    url: "/admin/machine/instruct/list",
+    method: "POST",
+    data
+  });
+}
+
+// 获取指令合集
+export function mqttSend (data) {
+  return request({
+    url: "/admin/machine/mqtt/sendmsg",
+    method: "POST",
+    data
+  });
+}
+
 // 角色列表
 export function roleList (data) {
   return request({

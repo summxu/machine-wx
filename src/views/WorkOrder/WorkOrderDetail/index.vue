@@ -13,7 +13,15 @@
       <Cell title="错误说明" :value="formData.codeString" />
       <Cell title="处理人" :value="formData.maintainerName" />
       <Cell title="审核人" :value="formData.userName" />
-      <Cell title="工单状态" :value="formData.status" />
+      <Cell title="工单状态" :value="formData.status">
+        <template #default>
+          <Tag v-if="formData.status === 1" round type="warning">待处理</Tag>
+          <Tag v-if="formData.status === 2" round type="primary ">正在处理</Tag>
+          <Tag v-if="formData.status === 3" round type="warning">待审核</Tag>
+          <Tag v-if="formData.status === 4" round type="success">处理完成</Tag>
+          <Tag v-if="formData.status === 5" round type="danger ">失效</Tag>
+        </template>
+      </Cell>
       <Cell title="创建时间" :value="formData.createTime" />
     </CellGroup>
     <CellGroup title=" ">
@@ -29,6 +37,7 @@
         type="info"
         block
         round
+        size="small"
         @click="save(3)"
         >修复</Button
       >
@@ -40,9 +49,9 @@
             userInfo.userinfo.id === 1)
         "
       >
-        <Button round type="primary" block @click="save(4)">通过</Button>
+        <Button round type="primary" size="small" block @click="save(4)">通过</Button>
         <div class="height15" />
-        <Button round type="danger" block @click="save(1)">驳回</Button>
+        <Button round type="danger" size="small" block @click="save(1)">驳回</Button>
       </div>
     </div>
   </div>
@@ -50,11 +59,11 @@
 
 <script>
 import { workOrderInfo, workOrderUpdate } from "@/axios/api";
-import { CellGroup, Field, Button, Cell } from "vant";
+import { CellGroup, Field, Button, Cell,Tag } from "vant";
 import { mapState } from 'vuex';
 export default {
   name: "WorkOrderDetail",
-  components: { Field, CellGroup, Button, Cell },
+  components: { Field, CellGroup, Button, Cell,Tag },
   created () {
     this.getData()
   },

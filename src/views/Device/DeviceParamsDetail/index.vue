@@ -43,7 +43,7 @@
       </Field>
     </CellGroup>
     <div class="center-padding15">
-      <Button round type="info" block @click="save">保存</Button>
+      <Button round type="info" size="small" block @click="save">保存</Button>
     </div>
   </div>
 </template>
