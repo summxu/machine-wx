@@ -1,7 +1,7 @@
 /*
  * @Auth: Chenxu
  * @Date: 2020-01-17 15:28:35
- * @LastEditTime: 2021-03-28 13:47:27
+ * @LastEditTime: 2021-12-25 09:41:24
  */
 const autoprefixer = require("autoprefixer");
 const pxtoviewport = require("postcss-px-to-viewport");
@@ -33,10 +33,10 @@ module.exports = {
     disableHostCheck: true,
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8001",
+        target: "http://101.34.41.251:9000",
         changeOrigin: true,
         pathRewrite: {
-          "^/api": ""
+          "^/api": "/api"
         }
       },
     }

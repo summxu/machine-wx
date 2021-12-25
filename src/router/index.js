@@ -1,7 +1,7 @@
 /*
  * @Author: Xuxu
  * @Date: 2020-09-10 08:57:16
- * @LastEditTime: 2021-04-02 14:51:41
+ * @LastEditTime: 2021-12-25 09:52:04
  * @Msg: Nothing
  */
 import Vue from "vue";
@@ -42,6 +42,14 @@ const routes = [
     component: () => import("@/views/User"),
     meta: {
       title: '推送用户'
+    }
+  },
+  {
+    path: "/scan",
+    name: "scan",
+    component: () => import("@/views/Scan"),
+    meta: {
+      title: '扫码开门'
     }
   },
   {
